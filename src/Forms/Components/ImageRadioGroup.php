@@ -4,7 +4,7 @@ namespace Alkoumi\FilamentImageRadioButton\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\Field;
-use Filament\Schemas\Components\Concerns\HasLabel;
+use Filament\Forms\Components\Concerns\HasLabel;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 
