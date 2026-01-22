@@ -1,1 +1,10 @@
-@import '../../vendor/filament/filament/resources/css/theme.css';
+@import "tailwindcss";
+@import "../../vendor/filament/filament/resources/css/theme.css";
+
+/* Source paths for Tailwind to scan */
+@source "../../resources/views/**/*.blade.php";
+
+/* Custom theme extensions if needed */
+@theme {
+    /* Add any custom theme values here */
+}

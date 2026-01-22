@@ -1,5 +1,6 @@
 {
     "name": "alkoumi/filament-image-radio-button",
+    "version": "2.0.0",
     "description": "Filament Form Radio Button But With Images",
     "keywords": [
         "alkoumi",
@@ -23,19 +24,19 @@
         }
     ],
     "require": {
-        "php": "^8.1|^8.2|^8.3|^8.4",
-        "filament/filament": "^3.0|^4.0",
+        "php": "^8.2|^8.3|^8.4",
+        "filament/filament": "^3.0|^4.0|^5.0",
+        "livewire/livewire": "^3.0|^4.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
-        "filament/upgrade": "^4.0",
         "nunomaduro/collision": "*",
-        "orchestra/testbench": "^10.6"
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "pestphp/pest": "^2.0|^3.0|^4.0"
     },
     "autoload": {
         "psr-4": {
-            "Alkoumi\\FilamentImageRadioButton\\": "src/",
-            "Alkoumi\\FilamentImageRadioButton\\Database\\Factories\\": "database/factories/"
+            "Alkoumi\\FilamentImageRadioButton\\": "src/"
         }
     },
     "autoload-dev": {
@@ -52,18 +53,14 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
+            "pestphp/pest-plugin": true
         }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Alkoumi\\FilamentImageRadioButton\\FilamentImageRadioButtonServiceProvider"
-            ],
-            "aliases": {
-                "FilamentImageRadioButton": "Alkoumi\\FilamentImageRadioButton\\Facades\\FilamentImageRadioButton"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

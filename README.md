@@ -1,106 +1,118 @@
-# This is Filament Form Radio Button But With Images 💁 🎉
-# RTL & Dark Mode Supported 🎉
+# Filament Image Radio Button
+
+A Filament form component that replaces traditional radio buttons with image selection. Supports RTL and Dark Mode.
 
 [![Total Downloads](https://poser.pugx.org/alkoumi/filament-image-radio-button/downloads)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
 ![Packagist Stars](https://img.shields.io/packagist/stars/alkoumi/filament-image-radio-button?color=yellow)
 [![License](https://poser.pugx.org/alkoumi/filament-image-radio-button/license)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/alkoumi/filament-image-radio-button.svg)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/alkoumi/filament-image-radio-button)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/run-tests.yml?branch=main&label=tests)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3Arun-tests+branch%3Amain)
 
-If you want Filament field to choose and select an Image from a group of images with a Radio button
-This is Image Radio button to replacing traditional radio buttons with images selection.
+![Demo](filament-image-radio-button.gif)
 
-##
+## Requirements
 
-![filament-image-radio-button.gif](stubs/filament-image-radio-button.gif)
+| Version | PHP  | Filament      | Livewire | Laravel          |
+|---------|------|---------------|----------|------------------|
+| 2.x     | 8.2+ | 3.x, 4.x, 5.x | 3.x, 4.x | 10.x, 11.x, 12.x |
+| 1.x     | 8.1+ | 3.x, 4.x      | 3.x      | 10.x, 11.x       |
 
 ## Installation
-
-You can install the package via composer:
 
 ```bash
 composer require alkoumi/filament-image-radio-button
 ```
-## for fiament 4
-1- **create custom theme [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)**
 
-2- then add
+### Theme Setup (Filament 4+)
 
-`@source '../../../../vendor/alkoumi/filament-image-radio-button/resources/views/**/*.blade.php';`
+1. Create a custom theme: [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)
 
-to the created theme.
+2. Add the package views to your theme CSS:
 
-
-3- Then register the theme in your xxxPanelProvider
-`->viteTheme('resources/css/filament/main/theme.css')`
-
-4- Then `npm run build`
-
-# Important
-### 1- OPTIONS
-The radio buttom has options then the scenario Here is you have 
-Model `Report` and you want to choose a design of a report 
-
-so options here must return `return Report::pluck('file', 'id')->toArray();` 
-the options will be like 
-
-`[ 1 => report1.jpg , 2 => report2.jpg]`
-then the user will choose the design.
-
-### 2- Images
-You must define where you stored the images in `filesystems` disks 
-somthing like `local` or `public` so in this example I am using `->disk('reports')` 
-So the component can find the images files
-
-        'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'serve' => true,
-            'throw' => false,
-        ],
-
-        'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL') . '/storage',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
-
-        'reports' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/reports'),
-            'url' => env('APP_URL') . '/reports',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
-
-## Usage in basic scenario
-```php
-use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;
-
-ImageRadioGroup::make('report_id')
-                    ->disk('reports')
-                    ->options(fn () => Report::pluck('file', 'id')->toArray()),
+```css
+@source '../../../../vendor/alkoumi/filament-image-radio-button/resources/views/**/*.blade.php';
 ```
 
-## Usage in advanced scenario
+3. Register the theme in your Panel Provider:
+
+```php
+->viteTheme('resources/css/filament/admin/theme.css')
+```
+
+4. Build assets:
+
+```bash
+npm run build
+```
+
+## Usage
+
+### Basic Usage
 
 ```php
 use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;
 
 ImageRadioGroup::make('report_id')
-                    ->animation(true)
-                    ->required()
-                    ->label(__('Report Design'))
-                    ->disk('reports')
-                    ->options(fn (Get $get) => Report::whereType($get('type_id'))->pluck('file', 'id')->toArray())
-                    ->afterStateUpdated(fn(Get $get, Set $set, ?string $state) => $set('reportdesign', ['report' => Report::find($state), 'date' => explode(' ', $get('report_date'))[0]])) 
-                    ->live(),
+    ->disk('reports')
+    ->options(fn () => Report::pluck('file', 'id')->toArray())
 ```
+
+### Full API
+
+```php
+use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;
+
+ImageRadioGroup::make('report_id')
+    ->label(__('Report Design'))
+    ->required()
+    ->disk('reports')                    // Storage disk name
+    ->options(fn () => [...])            // Array of [ id => image_path ]
+    ->gridColumns(4)                     // Number of columns (default: 3)
+    ->live()                             // Enable live updates
+```
+
+### Dynamic Options
+
+```php
+ImageRadioGroup::make('report_id')
+    ->disk('reports')
+    ->options(fn (Get $get) => Report::whereType($get('type_id'))->pluck('file', 'id')->toArray())
+    ->afterStateUpdated(fn (Get $get, Set $set, ?string $state) =>
+        $set('selected_report', Report::find($state))
+    )
+    ->live()
+```
+
+## Configuration
+
+### Storage Disk Setup
+
+Define a disk in `config/filesystems.php`:
+
+```php
+'reports' => [
+    'driver' => 'local',
+    'root' => storage_path('app/public/reports'),
+    'url' => env('APP_URL') . '/storage/reports',
+    'visibility' => 'public',
+],
+```
+
+### Options Format
+
+Options must be an array where:
+
+- **Key**: The value to store (e.g., model ID)
+- **Value**: The image path relative to the disk
+
+```php
+// Example: ['1' => 'storage/template1.jpg', '2' => 'storage/template2.png']
+Report::pluck('image_path', 'id')->toArray()
+```
+
 ## Screenshots
-![filament-plugin-modes.jpg](stubs/filament-plugin-modes.jpg)
+
+![Modes](filament-plugin-modes.jpg)
 
 ## Changelog
 
