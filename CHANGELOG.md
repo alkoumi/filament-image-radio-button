@@ -2,9 +2,55 @@
 
 All notable changes to `filament-image-radio-button` will be documented in this file.
 
+<<<<<<< HEAD
 ## v1.1.7  - 2025-08-27
 
 Add filament 4 support
+=======
+## v2.0.0 - 2025-01-20
+
+### Added
+- Support for Filament 5.x
+- Support for Livewire 4.x
+- Support for Laravel 12.x
+- Tailwind CSS v4 compatibility
+- New `gridColumns()` method to control grid layout (1-6 columns)
+- New `getDiskUrl()` method for better performance
+- Disabled state support with proper styling
+- Keyboard accessibility with focus-visible ring
+- Empty state message when no options available
+- Lazy loading for images (`loading="lazy"`)
+- Proper ARIA attributes for accessibility
+
+### Changed
+- Minimum PHP version is now 8.2
+- Updated dependencies to support broader version ranges
+- Migrated to CSS-based Tailwind configuration (v4)
+- Removed deprecated `tailwind.config.js` in favor of CSS `@theme` directive
+- **Breaking:** Removed unused Facade class
+- **Breaking:** Removed unused `FilamentImageRadioButton` class
+- Optimized Blade view - disk URL is now cached outside the loop
+- `imageWidth` and `imageHeight` are now actually applied to images
+- `animation()` toggle now properly enables/disables hover effects
+- Simplified ServiceProvider (removed ~100 lines of dead code)
+- Removed unused JavaScript build process
+- Improved test coverage with 20+ unit tests
+
+### Fixed
+- Performance: Disk URL no longer called for every image in loop
+- Images now respect `imageWidth` and `imageHeight` settings
+- Animation toggle now properly affects hover/transition effects
+
+### Removed
+- Unused `FilamentImageRadioButton` class
+- Unused `FilamentImageRadioButton` Facade
+- Unused `TestsFilamentImageRadioButton` mixin
+- Empty JavaScript build (no JS needed)
+- Redundant `HasLabel` trait (already in parent class)
+- All commented-out code from ServiceProvider
+
+**Full Changelog**: https://github.com/alkoumi/filament-image-radio-button/compare/v1.1.6...v2.0.0
+>>>>>>> 83a1fc0 (chore: prepare for v2.0.0 release)
 
 ## v1.1.6 - 2025-07-03
 
