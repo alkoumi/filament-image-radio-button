@@ -3,13 +3,19 @@
 All notable changes to `filament-image-radio-button` will be documented in this file.
 
 <<<<<<< HEAD
+
+## "Release v2.0.0 - stable release - 2026-01-22
+
+"Release v2.0.0 - stable release
+
 ## v1.1.7  - 2025-08-27
 
-Add filament 4 support
-=======
+# Add filament 4 support
+
 ## v2.0.0 - 2025-01-20
 
 ### Added
+
 - Support for Filament 5.x
 - Support for Livewire 4.x
 - Support for Laravel 12.x
@@ -23,6 +29,7 @@ Add filament 4 support
 - Proper ARIA attributes for accessibility
 
 ### Changed
+
 - Minimum PHP version is now 8.2
 - Updated dependencies to support broader version ranges
 - Migrated to CSS-based Tailwind configuration (v4)
@@ -37,11 +44,13 @@ Add filament 4 support
 - Improved test coverage with 20+ unit tests
 
 ### Fixed
+
 - Performance: Disk URL no longer called for every image in loop
 - Images now respect `imageWidth` and `imageHeight` settings
 - Animation toggle now properly affects hover/transition effects
 
 ### Removed
+
 - Unused `FilamentImageRadioButton` class
 - Unused `FilamentImageRadioButton` Facade
 - Unused `TestsFilamentImageRadioButton` mixin
@@ -50,7 +59,8 @@ Add filament 4 support
 - All commented-out code from ServiceProvider
 
 **Full Changelog**: https://github.com/alkoumi/filament-image-radio-button/compare/v1.1.6...v2.0.0
->>>>>>> 83a1fc0 (chore: prepare for v2.0.0 release)
+
+> > > > > > > 83a1fc0 (chore: prepare for v2.0.0 release)
 
 ## v1.1.6 - 2025-07-03
 
