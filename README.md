@@ -8,7 +8,7 @@ A Filament form component that replaces traditional radio buttons with image sel
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/alkoumi/filament-image-radio-button.svg)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/run-tests.yml?branch=main&label=tests)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3Arun-tests+branch%3Amain)
 
-![Demo](filament-image-radio-button.gif)
+![Demo](art/filament-image-radio-button.gif)
 
 ## Requirements
 
@@ -112,7 +112,7 @@ Report::pluck('image_path', 'id')->toArray()
 
 ## Screenshots
 
-![Modes](filament-plugin-modes.jpg)
+![Modes](art/filament-plugin-modes.jpg)
 
 ## Changelog
 
