@@ -4,6 +4,10 @@ All notable changes to `filament-image-radio-button` will be documented in this 
 
 <<<<<<< HEAD
 
+## v2.0.3 improves - 2026-05-19
+
+v2.0.3 improves
+
 ## v2.0.1 fix dependabot axios picomatch - 2026-04-13
 
 fix dependabot axios picomatch
